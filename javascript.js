@@ -14,7 +14,7 @@ for(let i = 0; i < gridSize; i++)
     for(let j = 0; j < gridSize; j ++)
     {
         let divJ = document.createElement('div');
-        divJ.innerHTML = `${i},${j}`;
+        //divJ.innerHTML = `${i},${j}`;
         divI.appendChild(divJ);
     }
 }
@@ -30,6 +30,11 @@ function mouseOver(e)
 {
     e.stopPropagation();
     //console.log(this);
-    this.style.backgroundColor = 'yellow';
+    this.style.backgroundColor = RandomColor();
+}
 
+function RandomColor()
+{
+    let randomColor = Math.floor(Math.random()*16777215).toString(16);
+    return `#${randomColor}`;
 }
