@@ -1,5 +1,6 @@
 const container = document.querySelector('.container');
-let gridSize = prompt('Enter the size of the grid in squares (1-100)');
+const button = document.querySelector('button');
+let gridSize = 10;
 
 if(gridSize < 1)
     gridSize = 1;
@@ -37,4 +38,42 @@ function RandomColor()
 {
     let randomColor = Math.floor(Math.random()*16777215).toString(16);
     return `#${randomColor}`;
+}
+
+function RemoveAllChildren(Element)
+{
+    while(Element.lastChild)
+    {
+        Element.lastChild.remove();
+    }
+}
+
+function UpdateGrid(GridSize)
+{
+    RemoveAllChildren(container);
+
+    if(GridSize < 1)
+        GridSize = 1;
+    if(GridSize > 100)
+        GridSize = 100;
+
+    for(let i = 0; i < GridSize; i++)
+    {
+        let divI = document.createElement('div');
+        container.appendChild(divI);
+
+        for(let j = 0; j < GridSize; j ++)
+        {
+            let divJ = document.createElement('div');
+            //divJ.innerHTML = `${i},${j}`;
+            divI.appendChild(divJ);
+        }
+    }
+
+    const divs = container.querySelectorAll('div');
+
+    divs.forEach(div => div.addEventListener('mouseover', mouseOver, {
+        capture: false,
+        once: true
+    }));
 }
