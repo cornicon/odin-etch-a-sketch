@@ -1,5 +1,5 @@
 const container = document.querySelector('.container');
-let gridSize = 16;
+let gridSize = prompt('Enter the size of the grid in squares (1-100)');
 
 if(gridSize < 1)
     gridSize = 1;
